@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head>
+
+<script>
+    function showIMG(event, text) {
+
+        var el, x, y, imgHeight, windowHeight;
+
+        el = document.getElementById('PopUpImage');
+
+        if (window.event) {
+            x = window.event.clientX + document.documentElement.scrollLeft + document.body.scrollLeft - 810;
+            y = window.event.clientY + document.documentElement.scrollTop + document.body.scrollTop;
+            windowHeight = window.innerHeight + document.documentElement.scrollTop + document.body.scrollTop;
+        }
+        else {
+            x = event.clientX + window.scrollX - 810;
+            y = event.clientY + window.scrollY;
+            windowHeight = window.innerHeight + window.scrollY;
+        }
+
+        imgHeight = y+640;
+        if (imgHeight > windowHeight){
+            y = y - (imgHeight - windowHeight);
+        }
+
+        x -= 2; y -= 2;
+        y = y+15
+        el.style.left = x + "px";
+        el.style.top  = y + "px";
+        if (el.style.display == "block"){
+            el.style.display = "none";
+        } else {
+            el.style.display = "block";
+        }
+
+        if (text!=''){
+            document.getElementById('PopUpImageName').src = text;
+        }
+    }
+    </script>
+
+    <style type="text/css">
+    table { page-break-inside:auto }
+
+    tr    {
+        border: 0;
+        page-break-inside:avoid;
+        page-break-after:auto
+    }
+
+    thead { display:table-header-group }
+
+    tfoot { display:table-footer-group }
+
+    body
+    {
+        font-size: 12pt
+    }
+
+    td{
+        border: 0;
+        text-align: right;
+    }
+
+    th{
+        border: 0;
+        text-align: right;
+    }
+
+    .caption_col1, .caption_col2, .caption_col3, .caption_col4, .caption_col5, .caption_col6, .caption_col7, .caption_col8, .caption_col9, .caption_col10, .caption_col11
+    {
+        background-color:#7fb0ce;
+        padding: 10px;
+        font-weight: bold;
+        text-align: right;
+        width: 100px;
+    }
+
+    .caption_col2{
+        text-align: left;
+        width: 200px;
+    }
+    .caption_col7{
+        width: 300px;
+    }
+    .caption_col8{
+        text-align: left;
+        width: 300px;
+    }
+    .caption_col9{
+        text-align: left;
+        width: 600px;
+    }
+    .caption_col10{
+        text-align: left;
+        width: 600px;
+    }
+    .caption_col11{
+        text-align: left;
+        width: 400px;
+    }
+
+    .table_row, .table_row_col1, .table_row_col2, .table_row_col3, .table_row_col4, .table_row_col5, .table_row_col6, .table_row_col7, .table_row_col8, .table_row_col9, .table_row_col10, .table_row_col11
+    {
+        padding: 2px 10px 2px 10px ;
+    }
+    .table_row_col2{
+        text-align: left;
+    }
+    .table_row_col8{
+        text-align: left;
+        white-space: nowrap;
+    }
+    .table_row_col7{
+        font-size: 10pt;
+    }
+    .table_row_col9{
+        text-align: left;
+        font-size: 10pt;
+    }
+    .table_row_col10{
+        text-align: left;
+        font-size: 10pt;
+    }
+    .table_row_col11{
+        text-align: left;
+        font-size: 10pt;
+    }
+</style>
+
+<body style="margin: 0">
+
+<div id='PopUpImage' style='display: none; position: absolute; left: 100px; top: 50px; border: solid black 1px; padding: 10px; background-color: rgb(100,100,100); text-align: justify; font-size: 12px; width: auto;' onclick="document.getElementById('PopUpImage').style.display = 'none' ">
+    <IMG id='PopUpImageName' __IMGSRC__ />
+</div>
+
+<span style="font-size:20pt; padding:2px; border:0;">Logbook (01.06.2022 - 30.06.2022)</span><br>
+<span style="padding:2px; border:0;">Name</span><br>
+<span style="padding:2px; border:0;">Birthday</span><br>
+<br>
+
+<table cellspacing="0" style="margin-top: 10px">
+    <thead>
+    <tr>
+        <th class="caption_col1">&#8470;</th>
+        <th class="caption_col2">Date/Time</th>
+        <th class="caption_col3">Glucose (mmol/L)</th>
+        <th class="caption_col4">Carb (BU,12g)</th>
+        <th class="caption_col5">Apidra&#174;</th>
+        <th class="caption_col6">Toujeo&#174;</th>
+        <th class="caption_col7">Medications</th>
+        <th class="caption_col8">Category</th>
+        <th class="caption_col9">Notes</th>
+        <th class="caption_col10">Additional </th>
+        <th class="caption_col11">Injection Sites</th>
+    </tr>
+    </thead>
+    <tbody>
+        <tr class="table_row" style="background-color: #d3d3d3;">
+        <td class="table_row_col1">1</td>
+        <td class="table_row_col2"><b>03.06.2022&nbsp;14:27</b></td>
+        <td class="table_row_col3"><span style="color:#e30613; font-weight: bold">26.9</span></td>
+        <td class="table_row_col4">-</td>
+        <td class="table_row_col5">7</td>
+        <td class="table_row_col6">-</td>
+        <td class="table_row_col7"></td>
+        <td class="table_row_col8">Lunch</td>
+        <td class="table_row_col9"></td>
+        <td class="table_row_col10">-</td>
+        <td class="table_row_col11">-</td>
+    </tr>
+    <tr class="table_row" style="background-color: #ffffff;">
+        <td class="table_row_col1">2</td>
+        <td class="table_row_col2"><b>04.06.2022&nbsp;01:29</b></td>
+        <td class="table_row_col3"><span style="color:#e30613; font-weight: bold">20.2</span></td>
+        <td class="table_row_col4">-</td>
+        <td class="table_row_col5">5</td>
+        <td class="table_row_col6">-</td>
+        <td class="table_row_col7"></td>
+        <td class="table_row_col8">Night</td>
+        <td class="table_row_col9"></td>
+        <td class="table_row_col10">-</td>
+        <td class="table_row_col11">-</td>
+    </tr>
+    <tr class="table_row" style="background-color: #d3d3d3;">
+        <td class="table_row_col1">3</td>
+        <td class="table_row_col2"><b>04.06.2022&nbsp;16:54</b></td>
+        <td class="table_row_col3"><span style="color:#e30613; font-weight: bold">20.1</span></td>
+        <td class="table_row_col4">-</td>
+        <td class="table_row_col5">5</td>
+        <td class="table_row_col6">-</td>
+        <td class="table_row_col7"></td>
+        <td class="table_row_col8">After Lunch</td>
+        <td class="table_row_col9"></td>
+        <td class="table_row_col10">-</td>
+        <td class="table_row_col11">-</td>
+    </tr>
+    <tr class="table_row" style="background-color: #ffffff;">
+        <td class="table_row_col1">4</td>
+        <td class="table_row_col2"><b>04.06.2022&nbsp;18:22</b></td>
+        <td class="table_row_col3"><span style="color:#e30613; font-weight: bold">16.8</span></td>
+        <td class="table_row_col4">-</td>
+        <td class="table_row_col5">2</td>
+        <td class="table_row_col6">-</td>
+        <td class="table_row_col7"></td>
+        <td class="table_row_col8">Other</td>
+        <td class="table_row_col9">&#8252;&#1040;&#1082;&#1090;&#1080;&#1074;&#1085;&#1099;&#1081; &#1080;&#1085;&#1089;&#1091;&#1083;&#1080;&#1085;: 2.28</td>
+        <td class="table_row_col10">-</td>
+        <td class="table_row_col11">-</td>
+    </tr>
+    <tr class="table_row" style="background-color: #d3d3d3;">
+        <td class="table_row_col1">5</td>
+        <td class="table_row_col2"><b>05.06.2022&nbsp;05:52</b></td>
+        <td class="table_row_col3"><span style="color:#e30613; font-weight: bold">14.9</span></td>
+        <td class="table_row_col4">-</td>
+        <td class="table_row_col5">3</td>
+        <td class="table_row_col6">-</td>
+        <td class="table_row_col7"></td>
+        <td class="table_row_col8">Night</td>
+        <td class="table_row_col9"></td>
+        <td class="table_row_col10">-</td>
+        <td class="table_row_col11">-</td>
+    </tr>
+    <tr class="table_row" style="background-color: #ffffff;">
+        <td class="table_row_col1">6</td>
+        <td class="table_row_col2"><b>05.06.2022&nbsp;17:07</b></td>
+        <td class="table_row_col3"><span style="color:#e30613; font-weight: bold">17.5</span></td>
+        <td class="table_row_col4">-</td>
+        <td class="table_row_col5">4</td>
+        <td class="table_row_col6">-</td>
+        <td class="table_row_col7"></td>
+        <td class="table_row_col8">After Lunch</td>
+        <td class="table_row_col9"></td>
+        <td class="table_row_col10">-</td>
+        <td class="table_row_col11">-</td>
+    </tr>
+    <tr class="table_row" style="background-color: #d3d3d3;">
+        <td class="table_row_col1">7</td>
+        <td class="table_row_col2"><b>05.06.2022&nbsp;21:16</b></td>
+        <td class="table_row_col3"><span style="color:#e30613; font-weight: bold">14.5</span></td>
+        <td class="table_row_col4">4</td>
+        <td class="table_row_col5">7</td>
+        <td class="table_row_col6">-</td>
+        <td class="table_row_col7"></td>
+        <td class="table_row_col8">Dinner</td>
+        <td class="table_row_col9"></td>
+        <td class="table_row_col10">-</td>
+        <td class="table_row_col11">-</td>
+    </tr>
+    <tr class="table_row" style="background-color: #ffffff;">
+        <td class="table_row_col1">8</td>
+        <td class="table_row_col2"><b>05.06.2022&nbsp;23:01</b></td>
+        <td class="table_row_col3"><span style="color:#e30613; font-weight: bold">13.6</span></td>
+        <td class="table_row_col4">-</td>
+        <td class="table_row_col5">-</td>
+        <td class="table_row_col6">-</td>
+        <td class="table_row_col7"></td>
+        <td class="table_row_col8">Night</td>
+        <td class="table_row_col9">&#8252;&#1040;&#1082;&#1090;&#1080;&#1074;&#1085;&#1099;&#1081; &#1080;&#1085;&#1089;&#1091;&#1083;&#1080;&#1085;: 2.33</td>
+        <td class="table_row_col10">-</td>
+        <td class="table_row_col11">-</td>
+    </tr>
+    <tr class="table_row" style="background-color: #d3d3d3;">
+        <td class="table_row_col1">9</td>
+        <td class="table_row_col2"><b>06.06.2022&nbsp;00:42</b></td>
+        <td class="table_row_col3"><span style="color:#e30613; font-weight: bold">14.5</span></td>
+        <td class="table_row_col4">-</td>
+        <td class="table_row_col5">-</td>
+        <td class="table_row_col6">-</td>
+        <td class="table_row_col7"></td>
+        <td class="table_row_col8">Night</td>
+        <td class="table_row_col9"></td>
+        <td class="table_row_col10">-</td>
+        <td class="table_row_col11">-</td>
+    </tr>
+    <tr class="table_row" style="background-color: #ffffff;">
+        <td class="table_row_col1">10</td>
+        <td class="table_row_col2"><b>06.06.2022&nbsp;03:00</b></td>
+        <td class="table_row_col3"><span style="color:#e30613; font-weight: bold">21.4</span></td>
+        <td class="table_row_col4">1</td>
+        <td class="table_row_col5">7</td>
+        <td class="table_row_col6">-</td>
+        <td class="table_row_col7"></td>
+        <td class="table_row_col8">Night</td>
+        <td class="table_row_col9"></td>
+        <td class="table_row_col10">-</td>
+        <td class="table_row_col11">-</td>
+    </tr>
+    <tr class="table_row" style="background-color: #d3d3d3;">
+        <td class="table_row_col1">11</td>
+        <td class="table_row_col2"><b>06.06.2022&nbsp;09:43</b></td>
+        <td class="table_row_col3"><span style="color:#e30613; font-weight: bold">15.4</span></td>
+        <td class="table_row_col4">-</td>
+        <td class="table_row_col5">3</td>
+        <td class="table_row_col6">-</td>
+        <td class="table_row_col7"></td>
+        <td class="table_row_col8">After Breakfast</td>
+        <td class="table_row_col9"></td>
+        <td class="table_row_col10">-</td>
+        <td class="table_row_col11">-</td>
+    </tr>
+    <tr class="table_row" style="background-color: #ffffff;">
+        <td class="table_row_col1">12</td>
+        <td class="table_row_col2"><b>06.06.2022&nbsp;15:58</b></td>
+        <td class="table_row_col3"><span style="color:#e30613; font-weight: bold">21.6</span></td>
+        <td class="table_row_col4">5</td>
+        <td class="table_row_col5">12</td>
+        <td class="table_row_col6">-</td>
+        <td class="table_row_col7"></td>
+        <td class="table_row_col8">Lunch</td>
+        <td class="table_row_col9"></td>
+        <td class="table_row_col10">-</td>
+        <td class="table_row_col11">-</td>
+    </tr>
+    <tr class="table_row" style="background-color: #d3d3d3;">
+        <td class="table_row_col1">13</td>
+        <td class="table_row_col2"><b>06.06.2022&nbsp;18:03</b></td>
+        <td class="table_row_col3"><span style="color:#e30613; font-weight: bold">15.8</span></td>
+        <td class="table_row_col4">0.9</td>
+        <td class="table_row_col5">2</td>
+        <td class="table_row_col6">-</td>
+        <td class="table_row_col7"></td>
+        <td class="table_row_col8">Other</td>
+        <td class="table_row_col9">&#8252;&#1040;&#1082;&#1090;&#1080;&#1074;&#1085;&#1099;&#1081; &#1080;&#1085;&#1089;&#1091;&#1083;&#1080;&#1085;: 2.71<br/>&#8226;&#1050;&#1086;&#1079;&#1080;&#1085;&#1072;&#1082; &#1055;&#1086;&#1076;&#1089;&#1086;&#1083;&#1085;&#1077;&#1095;&#1085;&#1099;&#1081; 30.0 g (0.9g);</td>
+        <td class="table_row_col10">-</td>
+        <td class="table_row_col11">-</td>
+    </tr>
+    <tr class="table_row" style="background-color: #ffffff;">
+        <td class="table_row_col1">14</td>
+        <td class="table_row_col2"><b>06.06.2022&nbsp;20:17</b></td>
+        <td class="table_row_col3"><span style="color:#e30613; font-weight: bold">13.2</span></td>
+        <td class="table_row_col4">-</td>
+        <td class="table_row_col5">4</td>
+        <td class="table_row_col6">-</td>
+        <td class="table_row_col7"></td>
+        <td class="table_row_col8">Dinner</td>
+        <td class="table_row_col9">&#8252;&#1040;&#1082;&#1090;&#1080;&#1074;&#1085;&#1099;&#1081; &#1080;&#1085;&#1089;&#1091;&#1083;&#1080;&#1085;: 0.34</td>
+        <td class="table_row_col10">-</td>
+        <td class="table_row_col11">-</td>
+    </tr>
+    <tr class="table_row" style="background-color: #d3d3d3;">
+        <td class="table_row_col1">15</td>
+        <td class="table_row_col2"><b>06.06.2022&nbsp;22:00</b></td>
+        <td class="table_row_col3"><span style="color:#f48a2a; font-weight: bold">8.4</span></td>
+        <td class="table_row_col4">-</td>
+        <td class="table_row_col5">-</td>
+        <td class="table_row_col6">-</td>
+        <td class="table_row_col7"></td>
+        <td class="table_row_col8">Other</td>
+        <td class="table_row_col9">&#8252;&#1040;&#1082;&#1090;&#1080;&#1074;&#1085;&#1099;&#1081; &#1080;&#1085;&#1089;&#1091;&#1083;&#1080;&#1085;: 1.39</td>
+        <td class="table_row_col10">-</td>
+        <td class="table_row_col11">-</td>
+    </tr>
+    <tr class="table_row" style="background-color: #ffffff;">
+        <td class="table_row_col1">16</td>
+        <td class="table_row_col2"><b>07.06.2022&nbsp;08:29</b></td>
+        <td class="table_row_col3"><span style="color:#e30613; font-weight: bold">14.1</span></td>
+        <td class="table_row_col4">-</td>
+        <td class="table_row_col5">2</td>
+        <td class="table_row_col6">-</td>
+        <td class="table_row_col7"></td>
+        <td class="table_row_col8">Fasting glucose</td>
+        <td class="table_row_col9"></td>
+        <td class="table_row_col10">-</td>
+        <td class="table_row_col11">-</td>
+    </tr>
+    <tr class="table_row" style="background-color: #d3d3d3;">
+        <td class="table_row_col1">17</td>
+        <td class="table_row_col2"><b>07.06.2022&nbsp;12:31</b></td>
+        <td class="table_row_col3">-</td>
+        <td class="table_row_col4">-</td>
+        <td class="table_row_col5">3</td>
+        <td class="table_row_col6">16</td>
+        <td class="table_row_col7"></td>
+        <td class="table_row_col8">Other</td>
+        <td class="table_row_col9"></td>
+        <td class="table_row_col10">-</td>
+        <td class="table_row_col11">-</td>
+    </tr>
+    <tr class="table_row" style="background-color: #ffffff;">
+        <td class="table_row_col1">18</td>
+        <td class="table_row_col2"><b>07.06.2022&nbsp;15:56</b></td>
+        <td class="table_row_col3"><span style="color:#e30613; font-weight: bold">18.2</span></td>
+        <td class="table_row_col4">-</td>
+        <td class="table_row_col5">4</td>
+        <td class="table_row_col6">-</td>
+        <td class="table_row_col7"></td>
+        <td class="table_row_col8">&#1050;&#1086;&#1085;&#1090;&#1088;&#1086;&#1083;&#1100;</td>
+        <td class="table_row_col9"></td>
+        <td class="table_row_col10">-</td>
+        <td class="table_row_col11">-</td>
+    </tr>
+    <tr class="table_row" style="background-color: #d3d3d3;">
+        <td class="table_row_col1">19</td>
+        <td class="table_row_col2"><b>07.06.2022&nbsp;21:27</b></td>
+        <td class="table_row_col3"><span style="color:#e30613; font-weight: bold">25.3</span></td>
+        <td class="table_row_col4">-</td>
+        <td class="table_row_col5">11</td>
+        <td class="table_row_col6">-</td>
+        <td class="table_row_col7"></td>
+        <td class="table_row_col8">Dinner</td>
+        <td class="table_row_col9"></td>
+        <td class="table_row_col10">-</td>
+        <td class="table_row_col11">-</td>
+    </tr>
+    <tr class="table_row" style="background-color: #ffffff;">
+        <td class="table_row_col1">20</td>
+        <td class="table_row_col2"><b>09.06.2022&nbsp;12:27</b></td>
+        <td class="table_row_col3">-</td>
+        <td class="table_row_col4">-</td>
+        <td class="table_row_col5">-</td>
+        <td class="table_row_col6">18</td>
+        <td class="table_row_col7"></td>
+        <td class="table_row_col8">Other</td>
+        <td class="table_row_col9"></td>
+        <td class="table_row_col10">-</td>
+        <td class="table_row_col11">-</td>
+    </tr>
+    <tr class="table_row" style="background-color: #d3d3d3;">
+        <td class="table_row_col1">21</td>
+        <td class="table_row_col2"><b>11.06.2022&nbsp;13:36</b></td>
+        <td class="table_row_col3"><span style="color:#04b71d; font-weight: bold">5.2</span></td>
+        <td class="table_row_col4">-</td>
+        <td class="table_row_col5">-</td>
+        <td class="table_row_col6">-</td>
+        <td class="table_row_col7"></td>
+        <td class="table_row_col8">Other</td>
+        <td class="table_row_col9"></td>
+        <td class="table_row_col10">-</td>
+        <td class="table_row_col11">-</td>
+    </tr>
+    <tr class="table_row" style="background-color: #ffffff;">
+        <td class="table_row_col1">22</td>
+        <td class="table_row_col2"><b>13.06.2022&nbsp;09:33</b></td>
+        <td class="table_row_col3"><span style="color:#3e83d9; font-weight: bold">3.5</span></td>
+        <td class="table_row_col4">-</td>
+        <td class="table_row_col5">-</td>
+        <td class="table_row_col6">-</td>
+        <td class="table_row_col7"></td>
+        <td class="table_row_col8">After Breakfast</td>
+        <td class="table_row_col9"></td>
+        <td class="table_row_col10">-</td>
+        <td class="table_row_col11">-</td>
+    </tr>
+    <tr class="table_row" style="background-color: #d3d3d3;">
+        <td class="table_row_col1">23</td>
+        <td class="table_row_col2"><b>16.06.2022&nbsp;11:30</b></td>
+        <td class="table_row_col3">-</td>
+        <td class="table_row_col4">-</td>
+        <td class="table_row_col5">-</td>
+        <td class="table_row_col6">17</td>
+        <td class="table_row_col7"></td>
+        <td class="table_row_col8">Other</td>
+        <td class="table_row_col9"></td>
+        <td class="table_row_col10">-</td>
+        <td class="table_row_col11">-</td>
+    </tr>
+    <tr class="table_row" style="background-color: #ffffff;">
+        <td class="table_row_col1">24</td>
+        <td class="table_row_col2"><b>17.06.2022&nbsp;23:49</b></td>
+        <td class="table_row_col3"><span style="color:#f48a2a; font-weight: bold">9.9</span></td>
+        <td class="table_row_col4">7</td>
+        <td class="table_row_col5">8</td>
+        <td class="table_row_col6">-</td>
+        <td class="table_row_col7"></td>
+        <td class="table_row_col8">Night</td>
+        <td class="table_row_col9">&#8226;&#1055;&#1102;&#1088;&#1077; &#1082;&#1072;&#1088;&#1090;&#1086;&#1092;&#1077;&#1083;&#1100;&#1085;&#1086;&#1077; 300.0 g (4.0g); <br/>&#8226;&#1052;&#1072;&#1081;&#1086;&#1085;&#1077;&#1079; &#1051;&#1102;&#1073;&#1080;&#1090;&#1077;&#1083;&#1100;&#1089;&#1082;&#1080;&#1081; 15.0 g (0.0g); <br/>&#8226;&#1057;&#1072;&#1093;&#1072;&#1088;-&#1088;&#1072;&#1092;&#1080;&#1085;&#1072;&#1076; 15.0 g (1.3g); <br/>&#8226;&#1055;&#1077;&#1095;&#1077;&#1085;&#1100;&#1077; &#1050;&#1088;&#1077;&#1082;&#1077;&#1088; 30.0 g (1.7g);</td>
+        <td class="table_row_col10">-</td>
+        <td class="table_row_col11">-</td>
+    </tr>
+    <tr class="table_row" style="background-color: #d3d3d3;">
+        <td class="table_row_col1">25</td>
+        <td class="table_row_col2"><b>18.06.2022&nbsp;22:45</b></td>
+        <td class="table_row_col3"><span style="color:#a764ff; font-weight: bold">2.2</span></td>
+        <td class="table_row_col4">-</td>
+        <td class="table_row_col5">-</td>
+        <td class="table_row_col6">-</td>
+        <td class="table_row_col7"></td>
+        <td class="table_row_col8">After Dinner</td>
+        <td class="table_row_col9"></td>
+        <td class="table_row_col10">-</td>
+        <td class="table_row_col11">-</td>
+    </tr>
+    <tr class="table_row" style="background-color: #ffffff;">
+        <td class="table_row_col1">26</td>
+        <td class="table_row_col2"><b>21.06.2022&nbsp;00:33</b></td>
+        <td class="table_row_col3"><span style="color:#04b71d; font-weight: bold">4.2</span></td>
+        <td class="table_row_col4">9.4</td>
+        <td class="table_row_col5">6</td>
+        <td class="table_row_col6">-</td>
+        <td class="table_row_col7"></td>
+        <td class="table_row_col8">Night</td>
+        <td class="table_row_col9"></td>
+        <td class="table_row_col10">-</td>
+        <td class="table_row_col11">-</td>
+    </tr>
+    <tr class="table_row" style="background-color: #d3d3d3;">
+        <td class="table_row_col1">27</td>
+        <td class="table_row_col2"><b>21.06.2022&nbsp;06:45</b></td>
+        <td class="table_row_col3"><span style="color:#04b71d; font-weight: bold">4.8</span></td>
+        <td class="table_row_col4">-</td>
+        <td class="table_row_col5">-</td>
+        <td class="table_row_col6">-</td>
+        <td class="table_row_col7"></td>
+        <td class="table_row_col8">Fasting glucose</td>
+        <td class="table_row_col9"></td>
+        <td class="table_row_col10">-</td>
+        <td class="table_row_col11">-</td>
+    </tr>
+    <tr class="table_row" style="background-color: #ffffff;">
+        <td class="table_row_col1">28</td>
+        <td class="table_row_col2"><b>21.06.2022&nbsp;07:11</b></td>
+        <td class="table_row_col3"><span style="color:#04b71d; font-weight: bold">4.5</span></td>
+        <td class="table_row_col4">6.9</td>
+        <td class="table_row_col5">6</td>
+        <td class="table_row_col6">-</td>
+        <td class="table_row_col7"></td>
+        <td class="table_row_col8">Before Breakfast</td>
+        <td class="table_row_col9"></td>
+        <td class="table_row_col10">-</td>
+        <td class="table_row_col11">-</td>
+    </tr>
+    <tr class="table_row" style="background-color: #d3d3d3;">
+        <td class="table_row_col1">29</td>
+        <td class="table_row_col2"><b>21.06.2022&nbsp;10:50</b></td>
+        <td class="table_row_col3"><span style="color:#04b71d; font-weight: bold">6.4</span></td>
+        <td class="table_row_col4">-</td>
+        <td class="table_row_col5">-</td>
+        <td class="table_row_col6">-</td>
+        <td class="table_row_col7"></td>
+        <td class="table_row_col8">After Breakfast</td>
+        <td class="table_row_col9"></td>
+        <td class="table_row_col10">-</td>
+        <td class="table_row_col11">-</td>
+    </tr>
+    <tr class="table_row" style="background-color: #ffffff;">
+        <td class="table_row_col1">30</td>
+        <td class="table_row_col2"><b>23.06.2022&nbsp;09:26</b></td>
+        <td class="table_row_col3"><span style="color:#04b71d; font-weight: bold">5.6</span></td>
+        <td class="table_row_col4">-</td>
+        <td class="table_row_col5">-</td>
+        <td class="table_row_col6">-</td>
+        <td class="table_row_col7"></td>
+        <td class="table_row_col8">&#1050;&#1086;&#1085;&#1090;&#1088;&#1086;&#1083;&#1100;</td>
+        <td class="table_row_col9"></td>
+        <td class="table_row_col10">-</td>
+        <td class="table_row_col11">-</td>
+    </tr>
+    <tr class="table_row" style="background-color: #d3d3d3;">
+        <td class="table_row_col1">31</td>
+        <td class="table_row_col2"><b>23.06.2022&nbsp;11:29</b></td>
+        <td class="table_row_col3"><span style="color:#04b71d; font-weight: bold">5.9</span></td>
+        <td class="table_row_col4">-</td>
+        <td class="table_row_col5">-</td>
+        <td class="table_row_col6">18</td>
+        <td class="table_row_col7"></td>
+        <td class="table_row_col8">Other</td>
+        <td class="table_row_col9"></td>
+        <td class="table_row_col10">-</td>
+        <td class="table_row_col11">-</td>
+    </tr>
+    <tr class="table_row" style="background-color: #ffffff;">
+        <td class="table_row_col1">32</td>
+        <td class="table_row_col2"><b>24.06.2022&nbsp;06:45</b></td>
+        <td class="table_row_col3"><span style="color:#04b71d; font-weight: bold">5.7</span></td>
+        <td class="table_row_col4">-</td>
+        <td class="table_row_col5">-</td>
+        <td class="table_row_col6">-</td>
+        <td class="table_row_col7"></td>
+        <td class="table_row_col8">Night</td>
+        <td class="table_row_col9"></td>
+        <td class="table_row_col10">-</td>
+        <td class="table_row_col11">-</td>
+    </tr>
+    <tr class="table_row" style="background-color: #d3d3d3;">
+        <td class="table_row_col1">33</td>
+        <td class="table_row_col2"><b>28.06.2022&nbsp;07:23</b></td>
+        <td class="table_row_col3"><span style="color:#04b71d; font-weight: bold">5.3</span></td>
+        <td class="table_row_col4">-</td>
+        <td class="table_row_col5">5</td>
+        <td class="table_row_col6">-</td>
+        <td class="table_row_col7"></td>
+        <td class="table_row_col8">Before Breakfast</td>
+        <td class="table_row_col9"></td>
+        <td class="table_row_col10">-</td>
+        <td class="table_row_col11">-</td>
+    </tr>
+    <tr class="table_row" style="background-color: #ffffff;">
+        <td class="table_row_col1">34</td>
+        <td class="table_row_col2"><b>28.06.2022&nbsp;12:07</b></td>
+        <td class="table_row_col3">-</td>
+        <td class="table_row_col4">-</td>
+        <td class="table_row_col5">-</td>
+        <td class="table_row_col6">15</td>
+        <td class="table_row_col7"></td>
+        <td class="table_row_col8">Other</td>
+        <td class="table_row_col9"></td>
+        <td class="table_row_col10">-</td>
+        <td class="table_row_col11">-</td>
+    </tr>
+    <tr class="table_row" style="background-color: #d3d3d3;">
+        <td class="table_row_col1">35</td>
+        <td class="table_row_col2"><b>28.06.2022&nbsp;15:50</b></td>
+        <td class="table_row_col3"><span style="color:#04b71d; font-weight: bold">7.2</span></td>
+        <td class="table_row_col4">-</td>
+        <td class="table_row_col5">-</td>
+        <td class="table_row_col6">-</td>
+        <td class="table_row_col7"></td>
+        <td class="table_row_col8">Other</td>
+        <td class="table_row_col9"></td>
+        <td class="table_row_col10">-</td>
+        <td class="table_row_col11">-</td>
+    </tr>
+
+    </tbody>
+</table>
+<br>
+<span style="font-size:10pt; border:0; text-align:right;">This report is generated by Diabetes:M Analytics (<a href="https://www.diabetes-m.com">https://www.diabetes-m.com</a>)</span>
+</body>
+</html>
