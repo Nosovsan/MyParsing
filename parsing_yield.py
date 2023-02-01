@@ -5,10 +5,10 @@ import re
 import json
 import csv
 
-# html = 'C:\\Users\\San\\Desktop\\Logbook.html'
+# html = 'C:\\Users\\San\\Desktop\\Export_Diabets-M.html'
 # Открываем файл в рабочей директории
-HTML = 'Logbook.html'
-CSV = f"\\result\\{HTML}_{datetime.date.today()}.csv"
+HTML_EXP = "Export_Diabets-M.html"
+CSV = f"\\result\\{HTML_EXP}_{datetime.date.today()}.csv"
 COLS = ['Номер', 'Дата и время', 'Глюкоза', 'Углеводы', 'Кор. инсулин', 'Дл. инсулин', 'Медик', 'Категория',
         'Примечания', 'Дополнительно', 'Место укола'
         ]
@@ -18,21 +18,36 @@ COLS = ['Номер', 'Дата и время', 'Глюкоза', 'Углево�
 """
 
 
-def get_data():
-    # try:
-    record_items = []
-    rec = []
-    with open(HTML) as fp:
+def get_data(html):
+    all_row = []
+    row = []
+    with open(html) as fp:
         soup = BeautifulSoup(fp, 'lxml')
-    all_rec = soup.find_all("td", {"class": re.compile('table_row_col[1-9]+')})
-    for rec in all_rec:
-        yield rec
-        record_items.append(rec)
-    # except Exception as e:
-    #     print("Exchange %s  %s  %s", e.__str__(), '[' + type(e).__name__ + ']', str(e)[0:200])
-    #     print(f"Error open {HTML} file")
-    # finally:
-    # return record_items
+    all_rows = soup.find_all("td", {"class": re.compile('table_row_col[1-9]+')})
+    return all_rows
+
+
+# Чистим записи от ненужных символов
+def clean_data(current_row):
+    try:
+        r = (current_row.get_text(strip=True).replace('\xa0', ' '))
+        return r
+    except Exception as ex:
+        print(ex)
+        print(f"Ошибка преобразования строки")
+
+
+def list_row(row_items):
+    count = 0
+    r = []
+    """ Переделать цикл. Пропускает item при count=11"""
+    for item in row_items:
+        if count < 11:
+            r.append(clean_data(item))
+            count += 1
+        else:
+            count = 0
+            print(r)
 
 
 def add_in_csv_caption(caption, file):
@@ -45,22 +60,8 @@ def add_in_csv_caption(caption, file):
     pass
 
 
-def get_clean_data():
-    try:
-        items = []
-        for item in get_data():
-            if item is not None:
-                items.append(''.join(item))  #.get_text(strip=True)))  # .replace('\xa0', ' ')))
-                print(item)
-            else:
-                print("Строка записи не определена")
-        print(items)
-    except Exception as ex:
-        print(ex)
-        print(f"Ошибка преобразования строки")
-        # quit()
-    # items.append(''.join(item.get_text(strip=True).replace('\xa0', ' ')))  # for item in items.find_all('td'))
-    # add_in_csv_records(items, CSV)
+# items.append(''.join(item.get_text(strip=True).replace('\xa0', ' ')))  # for item in items.find_all('td'))
+# add_in_csv_records(items, CSV)
 
 
 def add_in_csv_records(items, file):
@@ -70,7 +71,7 @@ def add_in_csv_records(items, file):
             writer = csv.writer(f_csv)  # DictWriter(f_csv, fieldnames=COLS)
             try:
                 for item in items:
-                    writer.writerow(get_clean_data(item))
+                    writer.writerow(clean_data(item))
             except:
                 print(f"File {file} save error")
     except:
@@ -84,5 +85,5 @@ def processing_records(soup):
 
 
 if __name__ == "__main__":
-    get_clean_data()
-    # get_data()
+    rows = get_data(HTML_EXP)
+    list_row(rows)
