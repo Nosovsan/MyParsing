@@ -5,49 +5,36 @@ import re
 import json
 import csv
 
-# html = 'C:\\Users\\San\\Desktop\\Export_Diabets-M.html'
-# Открываем файл в рабочей директории
-HTML_EXP = "Export_Diabets-M.html"
-CSV = f"\\result\\{HTML_EXP}_{datetime.date.today()}.csv"
+HTML_EXP = "Export_Diabets-M.html"  # Открываем файл в рабочей директории
+CSV = f"{HTML_EXP}_{datetime.date.today()}.csv"
 COLS = ['Номер', 'Дата и время', 'Глюкоза', 'Углеводы', 'Кор. инсулин', 'Дл. инсулин', 'Медик', 'Категория',
         'Примечания', 'Дополнительно', 'Место укола'
         ]
 
-"""
-Получение данных измерений (объекты BeautifulSoup) из файла-экспорта
-"""
-
-
-def get_data(html):
-    all_row = []
-    row = []
+""" Получение данных измерений (объекты BeautifulSoup) из файла-экспорта """
+def get_data(html: str) -> set:
     with open(html) as fp:
         soup = BeautifulSoup(fp, 'lxml')
     all_rows = soup.find_all("td", {"class": re.compile('table_row_col[1-9]+')})
     return all_rows
 
 
-# Чистим записи от ненужных символов
-def clean_data(current_row):
+""" Чистим записи от ненужных символов """
+def clean_data_row(current_row: list) -> str:
     try:
-        r = (current_row.get_text(strip=True).replace('\xa0', ' '))
-        return r
+        return current_row.get_text(strip=True).replace('\xa0', ' ') if len(current_row) else ""
     except Exception as ex:
         print(ex)
         print(f"Ошибка преобразования строки")
 
 
-def list_row(row_items):
-    count = 0
+def list_row(all_rows: list) -> list[list[str]]:
+    # for i in range(len(items) // 500):
+    #     _tmp = items[500 * i:500 * (i + 1)]
     r = []
-    """ Переделать цикл. Пропускает item при count=11"""
-    for item in row_items:
-        if count < 11:
-            r.append(clean_data(item))
-            count += 1
-        else:
-            count = 0
-            print(r)
+    for i in range(len(all_rows) // 11):
+        r.append([clean_data_row(item) for item in all_rows[11 * i: 11 * (i + 1)]])
+    return r
 
 
 def add_in_csv_caption(caption, file):
@@ -64,17 +51,18 @@ def add_in_csv_caption(caption, file):
 # add_in_csv_records(items, CSV)
 
 
-def add_in_csv_records(items, file):
+def write_records_to_csv_file(items: list, file: str):
     try:
         print(f'Заносим в файл запись {items[0]}')
-        with open(file, "a", encoding="utf-8", newline="") as f_csv:  # , newline='' "utf-8"
-            writer = csv.writer(f_csv)  # DictWriter(f_csv, fieldnames=COLS)
+        with open(file, "w", encoding="utf-8", newline="") as file_csv:  # , newline='' "utf-8"
             try:
-                for item in items:
-                    writer.writerow(clean_data(item))
-            except:
+                writer = csv.writer(file_csv).writerow(COLS)
+                writer = csv.writer(file_csv).writerows(items)
+            except Exception as ex:
+                print(ex.args)
                 print(f"File {file} save error")
-    except:
+    except Exception as ex:
+        print(ex.args)
         print(f"File {file} open error")
 
 
@@ -86,4 +74,5 @@ def processing_records(soup):
 
 if __name__ == "__main__":
     rows = get_data(HTML_EXP)
-    list_row(rows)
+    clean_rows = list_row(rows)
+    write_records_to_csv_file(clean_rows, CSV)
