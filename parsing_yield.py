@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
 import datetime
-
 import bs4
 from bs4 import BeautifulSoup
 import re
@@ -31,7 +30,7 @@ def clean_data_row(current_row: bs4.element.Tag) -> str:
         print(f"Ошибка преобразования строки")
 
 
-def list_row(all_rows: bs4.element.ResultSet) -> list[list[str]]:
+def list_row(all_rows: bs4.element.ResultSet) -> list[str]:
     """ Преобразование среза списка строк в блоки строк
     пример перебора срезов списка взят из интернета
         for i in range(len(items) // 500):
@@ -39,14 +38,16 @@ def list_row(all_rows: bs4.element.ResultSet) -> list[list[str]]:
     """
     # r = []
     for i in range(len(all_rows) // 11):
-        r = [clean_data_row(item) for item in all_rows[11 * i: 11 * (i + 1)]]
+        # r = [clean_data_row(item) for item in all_rows[11 * i: 11 * (i + 1)]]
+        yield [clean_data_row(item) for item in all_rows[11 * i: 11 * (i + 1)]]
     # return r
-        yield r
+    #     yield r
 
 
 def write_records_to_csv_file(items: bs4.element.ResultSet, file: str):
     try:
-        with open(file, "w", encoding="utf-8", newline="") as file_csv:  # , newline='' "utf-8"
+        # with open(file, "w", encoding="utf-8", newline="") as file_csv:  # , newline='' "utf-8"
+        with open(file, "w", encoding="cp1251", newline="", errors="ignore") as file_csv:  # , newline='' "utf-8"
             try:
                 csv.writer(file_csv).writerow(COLS)
                 csv.writer(file_csv).writerows(list_row(items))
@@ -60,7 +61,5 @@ def write_records_to_csv_file(items: bs4.element.ResultSet, file: str):
 
 if __name__ == "__main__":
     rows = get_data(HTML_EXP)
-    # clean_rows = list_row(rows)
-    # write_records_to_csv_file(clean_rows, CSV)
     write_records_to_csv_file(rows, CSV)
     print(f"Файл {CSV} загружен")
